@@ -8,8 +8,8 @@ import subprocess
 with open('mods.json', 'r') as f:
     mods = json.load(f)
 
-steamcmd = 'D:/SteamCMD/steamcmd.exe'
-username = 'capt_krakah'
+steamcmd = 'steamcmd.exe location'
+username = 'username'
 	
 # Checks if symlink already exists, if not creates the symlink for the mod and it's ID.
 def create_link(src, tgt, mod, mod_id):
@@ -24,8 +24,8 @@ def create_link(src, tgt, mod, mod_id):
 def update_mods(modlist=dict):
     for mod, mod_id in modlist.items():
         print(f"\nMod: {mod} (ID: {mod_id})\n")
-        path = f'D:/SteamCMD/steamapps/workshop/content/107410/{mod_id}'
-        target = f'D:/ArmaServer/@{mod}'
+        path = f'C:/SteamCMD/steamapps/workshop/content/107410/{mod_id}'
+        target = f'C:/ArmaServer/@{mod}'
         subprocess.run([steamcmd, '+login', username, '+workshop_download_item', '107410', mod_id, 'validate', '+quit'], shell=True)
         create_link(path, target, mod, mod_id)
 
@@ -43,8 +43,8 @@ def modlist_update(name=str, mod_id=str):
 		json.dump(data, outfile, indent=2)
 	outfile.close()
 	
-	path = f'D:/SteamCMD/steamapps/workshop/content/107410/{mod_id}'
-	target = f'D:/ArmaServer/@{name}'
+	path = f'C:/SteamCMD/steamapps/workshop/content/107410/{mod_id}'
+	target = f'C:/ArmaServer/@{name}'
 	subprocess.run([steamcmd, '+login', username, '+workshop_download_item', '107410', mod_id, 'validate', '+quit'], shell=True)
 	create_link(path, target, name, mod_id)
 
