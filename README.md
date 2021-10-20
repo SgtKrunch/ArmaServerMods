@@ -1,1 +1,1 @@
-"# ArmaServerMods" 
+# ArmaServerMods
